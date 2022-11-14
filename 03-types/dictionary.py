@@ -94,3 +94,43 @@ child3          Linus               2011
 ---------------------------------------------
 Počet záznamů: 3
 '''
+
+groups = {
+  'group1': {
+    'name': 'BTS',
+    'debut-year': 2013,
+    'favourite': True,
+    'genre': ('K-pop','EDM', 'R&B', 'Rock'),
+    'members': {'RM', 'Jin', 'Suga', 'J-hope', 'Jimin', 'V', 'Jungkook'},
+    'new songs': ['Yet To Come', 'Run BTS']
+  },
+  'group2': {
+    'name': 'Stray Kids',
+    'debut-year': 2018,
+    'favourite': True,
+    'genre': ('K-pop','Hip hop', 'Electronic'),
+    'members': {'Bang Chan','Lee Know','Changbin', 'Hyunjin', 'Han', 'Felix', 'Seungmin', 'I.N'},
+    'new songs': ['CASE 143', 'CHILL']
+  },
+  'group3': {
+    'name': 'Coldplay',
+    'debut-year': 1996,
+    'favourite': False,
+    'genre': ('Alternative rock', 'Electronic'),
+    'members': {'Ch. Martin', 'J. Buckland', 'G. Berryman', 'W. Champion', 'P. Harvey'},
+    'new songs': ['Biutyful', 'Let Somebody Go']
+  }
+}
+
+groups['group3']['members'].add('Timmy')
+del groups['group2']['debut-year']
+
+print("\nslovnik groups")
+print("-" * 184)
+print ("{:<10} {:<12} {:<12} {:<10} {:<30} {:<70} {:<10}".format('groups','name','debut-year','favourite','genre','members','new songs'))
+print("-" * 184)
+for k, info in groups.items():
+  print("{:<10} {:<12} {:<12} {:<10} {:<30} {:<70} {:<10}".format(k,str(info['name']),str(info['debut-year']) if 'debut-year' in info else '----',str(info['favourite']),
+  ','.join(str(x) for x in info['genre']),','.join(str(x) for x in info['members']),','.join(str(x) for x in info['new songs'])))
+print("-" * 184)
+print("Počet záznamů:", len(groups))

@@ -282,11 +282,36 @@ print(f'\tSbalení seznamů do proměnné values: {values}\n')
 # aby vznikl seznam n-tic (list of tuples) v podobě (cislo, znak).
 # Snažte se vždy o co nejzhuštěnější kód - ideálně na 1 řádku (+ další řádek s kontrolním výpisem proměnné)
 # import knihovny pro generování náhodných čísel
-from random import randint
 
 print(f'\n*************************************\nCvičení 2\n*************************************')
+#a
+hundreds = [i for i in range(1,2001) if i % 200 == 0]
+print(hundreds)
 
+#b
+import random
+import string
+pismena = string.ascii_uppercase
+ascii = [random.choice(pismena) for i in range(50)]
+print(ascii, len(ascii))
 
+#c
+hundred = hundreds[3:-3]
+print(hundred)
+
+#d
+letters = [chr for chr in ascii if ascii.count(chr) == 1]
+print(letters)
+
+#e
+'''
+asciii = ascii[:len(hundreds)]
+combine = list(zip(hundreds,asciii))
+print(combine)
+'''
+asciii = ascii[:len(hundreds)]
+combine = [(hundreds[i], asciii[i]) for i in range(0, len(hundreds))]
+print(combine)
 
 # ??? 3. cvičení ???
 # a) Přidejte do listu persons ještě n-tice (tuples) dalších 2 žen a 2 mužů.
@@ -298,3 +323,26 @@ print(f'\n*************************************\nCvičení 2\n******************
 # Záznamy budou seřazeny podle věku (sestupně).
 
 print(f'\n*************************************\nCvičení 3\n*************************************')
+#a
+persons.append(('Tomáš', 17, 'muž'))
+persons.extend([('Milada', 50, 'žena'), ('Karel', 20, 'muž'), ('Jana', 21, 'žena'), ('Ivan', 40, 'muž'), ('Josef', 38, 'muž'), ('Martin', 18, 'muž'), ('Petra', 68, 'žena'), ('Jiřina', 17, 'žena')])
+persons.insert(1, ('Samuel', 17, 'muž'))
+persons += ('Růženka', 17, 'žena'), ('Michael', 17, 'muž')
+print(persons)
+
+#b
+def vypis(lst):
+    result = ''
+    for item in lst:
+        result += f'{item[0]}\n{"-" * len(item[0])}\n'
+    return result
+
+women1 = list(filter(lambda zena: zena[2] == "žena", persons))
+
+women2 = [z for z in persons if z[2] == 'žena']
+print(vypis(women2))
+
+#c
+ipeople = [i for i in persons if i[0].count('i') == 1 or i[0].count('I') == 1]
+
+print(*[f"{index};{item[0]};{item[1]};{item[2]}\n" for index, item in enumerate(ipeople)])
